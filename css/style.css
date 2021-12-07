@@ -13,6 +13,24 @@ body {
   margin: 0 auto;
 }
 
+nav ul {
+  display: flex;
+}
+
+.nav_link {
+  list-style-type: none;
+  padding: 12px;
+}
+
+.nav_link a {
+  text-decoration-line: none;
+  color: black;
+}
+
+.active {
+  font-weight: bolder;
+}
+
 form {
   max-width: 400px;
   margin: 0 auto;
