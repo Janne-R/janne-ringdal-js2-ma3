@@ -1,35 +1,59 @@
-const form = document.querySelector("form");
-const username = document.querySelector("#username");
-const usernameError = document.querySelector("#usernameError");
-const email = document.querySelector("#email");
-const emailError = document.querySelector("#emailError");
-const password = document.querySelector("#password");
-const passwordError = document.querySelector("#passwordError");
+import { baseUrl } from "./settings/api.js";
+import { displayMessage } from "./components/displayMessage.js";
 
-function checkLength(value, len) {
-  if (value.trim().length > len) {
-    return true;
-  } else {
-    return false;
+const form = document.querySelector("form");
+
+const doLogin = async (username, password) => {
+  const url = baseUrl + "auth/local";
+
+  const data = JSON.stringify({ identifier: username, password: password });
+
+  const options = {
+    method: "POST",
+    body: data,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const json = await response.json();
+
+    console.log(json);
+
+    if (json.user) {
+      displayMessage("success", "Successfully logged in", ".message-container");
+    }
+
+    if (json.error) {
+      displayMessage("warning", "Invalid login details", ".message-container");
+    }
+  }
+  catch (error) {
+    console.log(error);
+
   }
 }
 
+const submitForm = (event) => {
+  const username = document.querySelector("#username");
+  const password = document.querySelector("#password");
+  const message = document.querySelector(".message-container");
 
-function validateForm(event) {
   event.preventDefault();
 
-  if (checkLength(username.value, 0)) {
-    usernameError.style.display = "none";
-  } else {
-    usernameError.style.display = "block";
+  message.innerHTML = "";
+
+  const usernameValue = username.value.trim();
+  const passwordValue = password.value.trim();
+
+  if (usernameValue.length === 0 || passwordValue.length === 0) {
+    return displayMessage("warning", "Values missing", ".message-container");
   }
 
-  if (checkLength(password.value, 0)) {
-    passwordError.style.display = "none";
-  } else {
-    passwordError.style.display = "block";
-  }
+  doLogin(usernameValue, passwordValue);
 
 }
 
-form.addEventListener("submit", validateForm);
+form.addEventListener("submit", submitForm);
