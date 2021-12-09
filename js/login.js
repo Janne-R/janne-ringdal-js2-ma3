@@ -1,5 +1,6 @@
 import { baseUrl } from "./settings/api.js";
 import { displayMessage } from "./components/displayMessage.js";
+import { saveToken, saveUser } from "./utils/storage.js";
 
 const form = document.querySelector("form");
 
@@ -23,7 +24,12 @@ const doLogin = async (username, password) => {
     console.log(json);
 
     if (json.user) {
-      displayMessage("success", "Successfully logged in", ".message-container");
+      //displayMessage("success", "Successfully logged in", ".message-container");
+
+      saveToken(json.jwt);
+      saveUser(json.user);
+
+      location.href = "/";
     }
 
     if (json.error) {
