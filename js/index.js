@@ -33,3 +33,5 @@ const getProducts = async () => {
 const products = await getProducts();
 showProducts(products);
 
+
+
