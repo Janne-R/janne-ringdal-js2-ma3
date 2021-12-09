@@ -13,17 +13,9 @@ body {
   margin: 0 auto;
 }
 
-nav ul {
-  display: flex;
-  padding: 0;
-}
-
-.nav_link {
+.menu a {
   list-style-type: none;
   margin-right: 10px;
-}
-
-.nav_link a {
   text-decoration-line: none;
   color: black;
 }

@@ -1,8 +1,11 @@
 import { baseUrl } from "./settings/api.js";
 import { displayMessage } from "./components/displayMessage.js";
 import { saveToken, saveUser } from "./utils/storage.js";
+import { createMenu } from "./common/createMenu.js";
 
 const form = document.querySelector("form");
+
+createMenu();
 
 const doLogin = async (username, password) => {
   const url = baseUrl + "auth/local";

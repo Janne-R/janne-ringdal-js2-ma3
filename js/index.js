@@ -1,7 +1,10 @@
 import { baseUrl } from "./settings/api.js";
 import { displayMessage } from "./components/displayMessage.js";
+import { createMenu } from "./common/createMenu.js";
 
 const productsUrl = baseUrl + "products";
+
+createMenu();
 
 const showProducts = (results) => {
   const container = document.querySelector(".product-container");
