@@ -7,8 +7,10 @@ const showProducts = (results) => {
   const container = document.querySelector(".product-container");
 
   results.forEach((product) => {
-    container.innerHTML += `
+    container.innerHTML += `<div class="products">
                                 <h4>${product.attributes.name}</h4>
+                                <p> ${product.attributes.description}</p>
+                                </div>
     `;
 
   });
