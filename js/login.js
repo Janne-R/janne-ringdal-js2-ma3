@@ -39,7 +39,6 @@ const doLogin = async (username, password) => {
   }
   catch (error) {
     console.log(error);
-
   }
 }
 

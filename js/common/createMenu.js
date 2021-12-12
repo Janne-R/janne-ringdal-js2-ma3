@@ -4,10 +4,10 @@ export const createMenu = () => {
   const { pathname } = document.location;
 
   const username = getUsername();
-  let authLink = `  <a href="login.html" class="${pathname === "/login.html" ? "active" : ""}">Login</a>`;
+  let authLink = `<a href="login.html" class="${pathname === "/login.html" ? "active" : ""}">Login</a>`;
 
   if (username) {
-    authLink = `<span> Hi ${username}</span>`
+    authLink = `<span>Hi ${username}</span>`
   }
 
   const container = document.querySelector(".menu-container");

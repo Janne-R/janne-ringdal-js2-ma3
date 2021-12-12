@@ -15,9 +15,7 @@ const showProducts = (results) => {
                                 <p> ${product.attributes.description}</p>
                                 </div>
     `;
-
   });
-
 }
 
 const getProducts = async () => {
@@ -32,7 +30,6 @@ const getProducts = async () => {
   } catch (error) {
     displayMessage("error", error, ".product-container");
   }
-
 }
 
 const products = await getProducts();
